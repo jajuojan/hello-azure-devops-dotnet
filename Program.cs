@@ -6,7 +6,7 @@ namespace hello_azure_devops_dotnet
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Wöörld!");
+            Console.WriteLine("Hello World!");
         }
     }
 }
