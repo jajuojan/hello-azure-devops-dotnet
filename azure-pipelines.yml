@@ -1,7 +1,4 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# TODO
 
 trigger:
 - master
@@ -10,10 +7,15 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  - task: UseDotNet@2
+    displayName: 'Set-up DotNet env'
+    inputs:
+      version: '3.0.x'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      command: build
+      projects: '**/*.csproj'
+      arguments: '--configuration Release'
+
